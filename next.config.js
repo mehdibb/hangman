@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [{hostname: 'as2.ftcdn.net'}],
+  }
+}
 
 module.exports = nextConfig
