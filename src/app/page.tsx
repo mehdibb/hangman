@@ -1,10 +1,10 @@
-import { Main } from '@/components/main'
-import Image from 'next/image'
+import { type ReactElement } from 'react';
+import { Main } from '@/components/Main';
 
-export default function Home() {
+export default function Home(): ReactElement {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between px-24 py-7">
       <Main />
     </main>
-  )
+  );
 }
