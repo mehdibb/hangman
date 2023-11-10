@@ -44,11 +44,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     project: './tsconfig.json',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-    'no-relative-import-paths',
-  ],
+  plugins: ['react', '@typescript-eslint', 'no-relative-import-paths'],
   rules: {
     'no-relative-import-paths/no-relative-import-paths': [
       'error',
