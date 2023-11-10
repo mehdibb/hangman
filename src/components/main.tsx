@@ -1,7 +1,7 @@
 import { Database as SQLite3Driver } from 'sqlite3';
 import { open, type Database } from 'sqlite';
 import { type ReactElement } from 'react';
-import { Game } from './Game';
+import { Game } from './game';
 
 let db: Database | undefined;
 
