@@ -20,7 +20,7 @@ export async function Main(): Promise<ReactElement> {
 
   return (
     <>
-      <h1 className="mb-8 text-4xl font-bold">Hangman</h1>
+      <h1 className="text-xl font-bold sm:mb-8 sm:text-4xl">Hangman</h1>
       <Game word={word.toUpperCase()} />
     </>
   );

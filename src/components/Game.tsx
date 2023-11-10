@@ -26,20 +26,17 @@ export const Game = ({ word }: Props): ReactElement => {
   };
 
   return (
-    <div className="flex h-full w-full max-w-full grow flex-col rounded-xl p-6 shadow-lg">
-      <div className="mb-6 flex justify-center">
+    <div className="flex h-full w-full max-w-full grow flex-col rounded-xl p-6 pt-2 shadow-lg sm:pt-6">
+      <div className="relative flex h-40 w-full justify-center sm:mb-6 sm:h-96">
         <Image
           alt="Hangman Image"
           priority
-          height="150"
           src={`/hangman-stages/${wrongGuesses}.jpg`}
           style={{
             aspectRatio: '1080/1920',
-            objectFit: 'cover',
-            height: 'auto',
-            width: 'auto',
+            objectFit: 'contain',
           }}
-          width="150"
+          fill
         />
       </div>
       <div className="mb-6">
@@ -72,7 +69,7 @@ export const Game = ({ word }: Props): ReactElement => {
           </div>
         ) : null}
       </div>
-      <div className="mt-auto flex flex-wrap justify-center gap-4">
+      <div className="mt-auto flex flex-wrap justify-center gap-x-4 gap-y-1 sm:gap-y-4">
         {LETTERS.map((letter) => (
           <Button
             disabled={guessedLetters.includes(letter) || wrongGuesses >= 6}
