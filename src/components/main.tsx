@@ -1,4 +1,4 @@
-import { Database as DatabaseDriver } from 'sqlite3';
+import { Database as SQLite3Driver } from 'sqlite3';
 import { open, type Database } from 'sqlite';
 import { type ReactElement } from 'react';
 import { Game } from './Game';
@@ -9,7 +9,7 @@ export async function Main(): Promise<ReactElement> {
   if (db === undefined) {
     db = await open({
       filename: './hangman.db',
-      driver: DatabaseDriver,
+      driver: SQLite3Driver,
     });
   }
 
@@ -20,7 +20,7 @@ export async function Main(): Promise<ReactElement> {
 
   return (
     <>
-      <h1 className="mb-8 text-4xl font-bold">Hangman Game</h1>
+      <h1 className="mb-8 text-4xl font-bold">Hangman</h1>
       <Game word={word.toUpperCase()} />
     </>
   );
