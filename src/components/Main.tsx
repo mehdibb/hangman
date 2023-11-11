@@ -8,7 +8,7 @@ let db: Database | undefined;
 export async function Main(): Promise<ReactElement> {
   if (db === undefined) {
     db = await open({
-      filename: './hangman.db',
+      filename: 'database/hangman.db',
       driver: SQLite3Driver,
     });
   }
