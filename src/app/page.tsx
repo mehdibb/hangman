@@ -8,3 +8,5 @@ export default function Home(): ReactElement {
     </main>
   );
 }
+
+export const revalidate = 0;
