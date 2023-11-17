@@ -1,17 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, type ReactElement } from 'react';
+import { useState, type ReactElement, useEffect } from 'react';
 import { Check, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { LETTERS } from '@/lib/constants';
+import { updateMatch } from '@/lib/actions';
 
 interface Props {
+  matchId?: number;
   word: string;
 }
 
-export const Game = ({ word }: Props): ReactElement => {
+export const Game = ({ word, matchId }: Props): ReactElement => {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   const wrongGuesses = guessedLetters.filter(
@@ -22,8 +24,25 @@ export const Game = ({ word }: Props): ReactElement => {
 
   const handlePlayAgain = (): void => {
     setGuessedLetters([]);
-    router.refresh();
+    if (matchId == null) {
+      router.refresh();
+    } else {
+      router.push('/');
+    }
   };
+
+  useEffect(() => {
+    if (wrongGuesses >= 6 && matchId != null) {
+      void updateMatch(matchId, 'lost');
+    }
+
+    if (
+      word.split('').every((letter) => guessedLetters.includes(letter)) &&
+      matchId != null
+    ) {
+      void updateMatch(matchId, 'won');
+    }
+  }, [guessedLetters, matchId, word, wrongGuesses]);
 
   return (
     <div className="flex h-full w-full max-w-full grow flex-col rounded-xl p-6 pt-2 shadow-lg sm:pt-6">

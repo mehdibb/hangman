@@ -30,7 +30,6 @@ export async function Main(): Promise<ReactElement> {
 
   return (
     <>
-      <h1 className="text-xl font-bold sm:mb-8 sm:text-4xl">Hangman</h1>
       <Navbar username={session?.user?.email ?? undefined} />
       <Game word={chosenWord.word.toUpperCase()} />
     </>

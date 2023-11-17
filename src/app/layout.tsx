@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import { type ReactElement } from 'react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
@@ -27,7 +28,12 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <main className="flex min-h-full flex-col items-center px-2 py-4 sm:px-24 sm:py-7">
+          <Link href={'/'}>
+            <h1 className="text-xl font-bold sm:mb-8 sm:text-4xl">Hangman</h1>
+          </Link>
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -2,11 +2,7 @@ import { type ReactElement } from 'react';
 import { Main } from '@/components/Main';
 
 export default function Home(): ReactElement {
-  return (
-    <main className="flex min-h-full flex-col items-center px-2 py-4 sm:px-24 sm:py-7">
-      <Main />
-    </main>
-  );
+  return <Main />;
 }
 
 export const revalidate = 0;
