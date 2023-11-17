@@ -24,6 +24,12 @@ module.exports = {
       },
     },
     {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'import/no-named-as-default': 'off',
+      },
+    },
+    {
       files: ['*.js'],
       rules: {
         '@typescript-eslint/no-unsafe-argument': 'off',
