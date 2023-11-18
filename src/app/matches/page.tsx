@@ -47,8 +47,8 @@ export default async function Page(): Promise<ReactElement> {
                 {match.result === 'in_progress'
                   ? 'In Progress'
                   : match.result === 'won'
-                  ? 'Won'
-                  : 'Lost'}
+                    ? 'Won'
+                    : 'Lost'}
               </p>
             </Button>
           </Link>
