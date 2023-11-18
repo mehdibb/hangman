@@ -1,7 +1,6 @@
 import { type ReactElement } from 'react';
 import { getServerSession } from 'next-auth/next';
 import { Game } from './Game';
-import { Navbar } from './Navbar';
 import db from '@/lib/db';
 import { authOptions } from '@/lib/auth';
 
@@ -28,10 +27,5 @@ export async function Main(): Promise<ReactElement> {
     ]);
   }
 
-  return (
-    <>
-      <Navbar username={session?.user?.email ?? undefined} />
-      <Game word={chosenWord.word.toUpperCase()} />
-    </>
-  );
+  return <Game word={chosenWord.word.toUpperCase()} />;
 }

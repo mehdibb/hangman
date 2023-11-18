@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import { type ReactElement } from 'react';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { Navbar } from '@/components/Navbar';
+import NextAuthProvider from '@/lib/auth-provider';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -28,11 +29,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <main className="flex min-h-full flex-col items-center px-2 py-4 sm:px-24 sm:py-7">
-          <Link href={'/'}>
-            <h1 className="text-xl font-bold sm:mb-8 sm:text-4xl">Hangman</h1>
-          </Link>
-          {children}
+        <main className="flex min-h-full flex-col items-center px-2 py-4 pt-16 sm:px-24 sm:py-7 sm:pt-16">
+          <NextAuthProvider>
+            <Navbar />
+            {children}
+          </NextAuthProvider>
         </main>
       </body>
     </html>

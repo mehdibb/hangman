@@ -45,8 +45,8 @@ export const Game = ({ word, matchId }: Props): ReactElement => {
   }, [guessedLetters, matchId, word, wrongGuesses]);
 
   return (
-    <div className="flex h-full w-full max-w-full grow flex-col rounded-xl p-6 pt-2 shadow-lg sm:pt-6">
-      <div className="relative flex h-40 w-full justify-center sm:mb-6 sm:h-96">
+    <div className="flex h-full w-full max-w-full grow flex-col rounded-xl p-6 pt-2 sm:pt-6">
+      <div className="pointer-events-none relative -z-10 flex h-40 w-full justify-center sm:mb-6 sm:h-96">
         <Image
           alt="Hangman Image"
           priority

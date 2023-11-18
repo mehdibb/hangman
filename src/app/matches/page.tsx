@@ -33,29 +33,27 @@ export default async function Page(): Promise<ReactElement> {
   }>;
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center pt-7">
+      <h2 className="mb-4 text-2xl font-bold">Previous Matches</h2>
       <div className="flex flex-col items-center justify-center">
-        <h2 className="mb-4 text-2xl font-bold">Previous Matches</h2>
-        <div className="flex flex-col items-center justify-center">
-          {matches.map((match) => (
-            <Link key={match.id} href={`/matches/${match.id}`}>
-              <Button
-                className="mb-4 flex w-96 items-center justify-between"
-                variant="ghost"
-              >
-                <p className="text-xl font-bold">{match.word}</p>
-                <p className="text-xl font-bold">
-                  {match.result === 'in_progress'
-                    ? 'In Progress'
-                    : match.result === 'won'
-                    ? 'Won'
-                    : 'Lost'}
-                </p>
-              </Button>
-            </Link>
-          ))}
-        </div>
+        {matches.map((match) => (
+          <Link key={match.id} href={`/matches/${match.id}`}>
+            <Button
+              className="mb-4 flex w-96 items-center justify-between"
+              variant="ghost"
+            >
+              <p className="text-xl font-bold">{match.word}</p>
+              <p className="text-xl font-bold">
+                {match.result === 'in_progress'
+                  ? 'In Progress'
+                  : match.result === 'won'
+                  ? 'Won'
+                  : 'Lost'}
+              </p>
+            </Button>
+          </Link>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
