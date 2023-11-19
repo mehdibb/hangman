@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Mehdi Babapour', url: 'https://twitter.com/Mehdibbp' }],
   creator: 'Mehdi Babapour',
   keywords: ['hangman', 'game', 'online-game', 'react', 'nextjs'],
+  metadataBase: new URL('https://hangman.mehdibabapour.ir'),
   openGraph: {
     type: 'website',
     url: 'https://hangman.mehdibabapour.ir',

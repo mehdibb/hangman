@@ -6,12 +6,20 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
-const navigation: Array<{ current: boolean; href: string; name: string }> = [];
+const navigation: Array<{ href: string; name: string }> = [
+  {
+    href: '/leaderboard',
+    name: 'Leaderboard',
+  },
+];
 
 export function Navbar(): ReactElement {
   const session = useSession();
+
+  const pathname = usePathname();
 
   const username = session?.data?.user?.email;
   return (
@@ -32,12 +40,12 @@ export function Navbar(): ReactElement {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      item.current
+                      item.href === pathname
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium'
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.href === pathname ? 'page' : undefined}
                   >
                     {item.name}
                   </a>
@@ -107,12 +115,12 @@ export function Navbar(): ReactElement {
               as="a"
               href={item.href}
               className={cn(
-                item.current
+                item.href === pathname
                   ? 'bg-gray-900 text-white'
                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                 'block rounded-md px-3 py-2 text-base font-medium'
               )}
-              aria-current={item.current ? 'page' : undefined}
+              aria-current={item.href === pathname ? 'page' : undefined}
             >
               {item.name}
             </Disclosure.Button>
