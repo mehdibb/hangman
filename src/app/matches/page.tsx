@@ -23,7 +23,7 @@ export default async function Page(): Promise<ReactElement> {
 
   const matches = (
     await db.query(
-      'SELECT matches.id, words.word, matches.result FROM matches INNER JOIN words ON matches.word_id = words.id WHERE matches.user_id = $1 ORDER BY matches.id DESC',
+      'SELECT matches.id, words.word, matches.result FROM matches INNER JOIN words ON matches.word_id = words.id WHERE matches.user_id = $1 ORDER BY matches.id DESC LIMIT 10;',
       [user.id]
     )
   ).rows as Array<{
@@ -32,9 +32,25 @@ export default async function Page(): Promise<ReactElement> {
     word: string;
   }>;
 
+  const winRate = (
+    await db.query(
+      `SELECT 
+    (SELECT COUNT(*) 
+     FROM matches 
+     WHERE user_id = $1 AND result = 'won')::float / 
+    NULLIF((SELECT COUNT(*) 
+             FROM matches 
+             WHERE user_id = $1 AND result != 'in_progress'),0) as win_rate;`,
+      [user.id]
+    )
+  ).rows[0] as { win_rate: number };
+
   return (
     <div className="flex flex-col items-center justify-center pt-7">
       <h2 className="mb-4 text-2xl font-bold">Previous Matches</h2>
+      <h3 className="mb-4 text-xl font-bold">
+        Win rate: {(winRate.win_rate * 100).toFixed(0)}%
+      </h3>
       <div className="flex flex-col items-center justify-center">
         {matches.map((match) => (
           <Link key={match.id} href={`/matches/${match.id}`}>
