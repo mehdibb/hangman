@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import { type ReactElement } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { cn } from '@/lib/utils';
 import { Navbar } from '@/components/Navbar';
 import NextAuthProvider from '@/lib/auth-provider';
@@ -47,6 +48,7 @@ export default function RootLayout({
           <NextAuthProvider>
             <Navbar />
             {children}
+            <Analytics />
           </NextAuthProvider>
         </main>
       </body>

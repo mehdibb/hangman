@@ -2,6 +2,8 @@
 
 import db from './db';
 
+// FIXME: This action needs authentication otherwise anyone can update the
+// result of a match.
 export async function updateMatch(
   matchId: number,
   result: 'won' | 'lost'
