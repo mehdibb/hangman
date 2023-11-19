@@ -1,5 +1,14 @@
 import { type ReactElement } from 'react';
 import db from '@/lib/db';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 export const revalidate = 0;
 
@@ -23,36 +32,26 @@ export default async function Page(): Promise<ReactElement> {
   }>;
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold">Leaderboard</h1>
-        <table className="mt-4 table-auto border-collapse border border-gray-900">
-          <thead>
-            <tr>
-              <th className="border border-gray-900 px-4 py-2">Username</th>
-              <th className="border border-gray-900 px-4 py-2">Win rate</th>
-              <th className="border border-gray-900 px-4 py-2">
-                Total matches
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((row) => (
-              <tr key={row.email}>
-                <td className="border border-gray-900 px-4 py-2">
-                  {row.email}
-                </td>
-                <td className="border border-gray-900 px-4 py-2">
-                  {Math.round(row.winrate * 100)}%
-                </td>
-                <td className="border border-gray-900 px-4 py-2">
-                  {row.total_matches}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <Table>
+      <TableCaption>Leaderboard</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Rank</TableHead>
+          <TableHead>Username</TableHead>
+          <TableHead>Win Rate</TableHead>
+          <TableHead>Total Matches</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {items.map((row, i) => (
+          <TableRow key={row.email}>
+            <TableCell>{i}</TableCell>
+            <TableCell>{row.email}</TableCell>
+            <TableCell>{Math.round(row.winrate * 100)}%</TableCell>
+            <TableCell>{row.total_matches}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 }
