@@ -25,13 +25,8 @@ export async function Main(): Promise<ReactElement> {
 
     await db.query(
       `DELETE FROM matches 
-          WHERE id = (
-              SELECT id 
-              FROM matches
-              WHERE user_id = $1 AND result = 'in_progress' 
-              ORDER BY match_timestamp DESC 
-              LIMIT 1
-        );`,
+      WHERE user_id = $1 
+      AND result = 'in_progress';`,
       [user.id]
     );
 
