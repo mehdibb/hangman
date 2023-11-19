@@ -42,7 +42,9 @@ export default async function Page(): Promise<ReactElement> {
               className="mb-4 flex w-96 items-center justify-between"
               variant="ghost"
             >
-              <p className="text-xl font-bold">{match.word}</p>
+              <p className="text-xl font-bold">
+                {match.result === 'in_progress' ? '?' : match.word}
+              </p>
               <p className="text-xl font-bold">
                 {match.result === 'in_progress'
                   ? 'In Progress'
