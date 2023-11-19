@@ -1,6 +1,8 @@
 import { type ReactElement } from 'react';
 import db from '@/lib/db';
 
+export const revalidate = 0;
+
 export default async function Page(): Promise<ReactElement> {
   const items = (
     await db.query(`
