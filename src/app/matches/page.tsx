@@ -6,6 +6,8 @@ import { authOptions } from '@/lib/auth';
 import db from '@/lib/db';
 import { Button } from '@/components/ui/button';
 
+export const revalidate = 0;
+
 export default async function Page(): Promise<ReactElement> {
   const session = await getServerSession(authOptions);
 

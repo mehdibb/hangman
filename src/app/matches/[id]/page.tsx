@@ -44,7 +44,7 @@ export default async function Page({
       <>
         <p className="mb-2">Match already finished.</p>
         <Link href="/">
-          <Button>Play again</Button>
+          <Button>Play a new match</Button>
         </Link>
       </>
     );
